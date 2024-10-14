@@ -2,9 +2,6 @@ from django.shortcuts import render, redirect
 from proyectosApp.forms import FormProyecto
 from proyectosApp.models import Proyecto
 
-# Create your views here.
-def index(request):
-    return render(request, 'index.html')
 
 def listadoProyectos(request):
     proyectos = Proyecto.objects.all()
@@ -21,6 +18,8 @@ def agregarProyecto(request):
     data = {'form': form}
     return render(request, 'agregarProyecto.html', data)
 
+
+
 def eliminarProyecto(request, id):
     proyecto = Proyecto.objects.get(id=id)
     proyecto.delete()
@@ -36,3 +35,6 @@ def actualizarProyecto(request, id):
             return index(request)
     data = {'form': form}
     return render(request, 'agregarProyecto.html', data)
+# Create your views here.
+def index(request):
+    return render(request, 'index.html')
